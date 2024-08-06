@@ -23,18 +23,18 @@ async function handleProcessItem(item) {
   const response = await axios.get(`/todos/${item.id}`);
 
   if (response.status !== 200) {
-    throw new Error(`Failed to process: ${item.idBoleto}`);
+    throw new Error(`Request failed with status code ${response.status}`);
   }
 }
 
 // Function that handles generating a success message
 function onSuccessMessage(item) {
-  return `Success: ${item.name} processed successfully.`;
+  return `Success: processed successfully.`;
 }
 
 // Function that handles generating an error message
 function onErrorMessage(item, error) {
-  return `Error: ${item.idBoleto} failed to process. Reason: ${error.message}`;
+  return `Error: failed to process. Reason: ${error.message}`;
 }
 
 module.exports = {
